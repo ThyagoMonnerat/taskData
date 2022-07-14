@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planilha</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="historicContainer">
+      <p id="title">Histórico</p>
+      <div id="openHistoric">
+        <img src="./assets/openArrow.PNG" id="open"/>
+        <img src="./assets/closeArrow.PNG" id="close" />
+      </div>
+      <div id="historicSectionContainer"></div>
+    </div>
+
+    <div id="containerAll">
+      <div id="finalOfTheDay" class="finalOfTheDayShow">
+        <div id="finalOfTheDayResult">
+          <p id="finalOfTheDayResultTitle">Hoje o dia rendeu:</p>
+          <p id="amount"></p>
+          <p id="minutes"></p>
+          <p id="hours"></p>
+          <button id="done">Finalizar</button>
+        </div>
+      </div>
+
+      <div id="containerContent">
+        <h1>Tasks</h1>
+        <input id="taskTime" type="number" />
+        <div id="buttons">
+          <button id="calcBtn" type="submit">Anotar</button>
+          <button id="toHBtn">Em horas</button>
+          <div id="doneContainer">
+            <button id="doneDayBtn" disabled>Finalizar Dia</button>
+            <input id="doneSecurity" type="checkbox" />
+            <p>Chave de segurança de conclusão do dia</p>
+          </div>
+        </div>
+        <input id="taskResult" disabled type="number" />
+        <input id="taskHour" disabled type="text" />
+        <div id="taskQuantContainer">
+          <div id="taskAmount">
+            <p id="taskAmountTitle">Quantidade de tasks:</p>
+            <p id="taskAmountSubTitle">0</p>
+          </div>
+          <div id="latestTask">
+            <p id="latestTaskTitle">Horário da última task:</p>
+            <p id="latestTaskSubTitle">0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
