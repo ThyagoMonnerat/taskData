@@ -146,12 +146,12 @@ body {
 }
 
 #finalOfTheDay {
-  width: 100%;
+  width: fit-content;
   height: 100%;
   position: absolute;
-  top: -200rem;
+  transform: translateY(-100%);
 
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -188,7 +188,7 @@ body {
 }
 
 #historicContainer {
-  width: 30%;
+  width: 29%;
   min-width: 26%;
   height: 100%;
   position: absolute;
@@ -229,7 +229,7 @@ body {
   background-color: rgba(239, 239, 239);
 }
 
-#historicSectionContainer p{
+#historicSectionContainer p {
   color: gray;
 }
 

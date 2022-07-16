@@ -6,10 +6,12 @@ let doneSecurity = document.getElementById('doneSecurity')
 let taskAmount = document.getElementById('taskAmountSubTitle')
 let latestTask = document.getElementById('latestTaskSubTitle')
 let doneBtn = document.getElementById('done')
+let endDay = document.getElementById('doneDayBtn')
 let showEnd = document.getElementById('finalOfTheDay')
 let historicMenu = document.getElementById('historicContainer')
 let historicBtn = document.getElementById('openHistoric')
 let historicList = document.getElementById('historicSectionContainer')
+let remove = document.getElementById('remove')
 
 function addZero(i) {
   if (i < 10) {
@@ -20,6 +22,9 @@ function addZero(i) {
 
 calcBtn.addEventListener('click', () => {
   if (taskTime.value > 0) {
+    endDay.addEventListener('click', () => {
+      showEnd.style = 'transform: translateY(0%)'
+    })
     let calc = Number(taskTime.value) + Number(taskResult.value)
 
     taskResult.value = calc.toFixed(1)
@@ -32,7 +37,14 @@ calcBtn.addEventListener('click', () => {
     let s = addZero(date.getSeconds())
 
     let hour = (latestTask.innerText = h + ':' + m + ':' + s)
-    historicList.innerHTML += `<p>Última task: ${taskTime.value}min ás ${hour}</p>`
+    var toWrite = `<p>Última task: ${taskTime.value}min ás ${hour}</p>`
+    historicList.innerHTML += toWrite
+
+    if (taskResult.value > 0) {
+      let calcToH = Number(taskResult.value) / 60
+
+      toHResult.value = calcToH.toFixed(1) + ' hora(s)'
+    }
 
     doneDay.addEventListener('click', () => {
       document.getElementById('amount').innerText =
@@ -41,17 +53,20 @@ calcBtn.addEventListener('click', () => {
         'Total de minutos: ' + taskResult.value
       document.getElementById('hours').innerText =
         'Total de horas: ' + toHResult.value
-
-      showEnd.style = 'top: 0rem; display: flex'
     })
-  }
-})
 
-toH.addEventListener('click', () => {
-  if (taskResult.value > 0) {
-    let calcToH = Number(taskResult.value) / 60
+    remove.addEventListener('click', () => {
+      let calcRemove = Number(taskResult.value) - Number(taskTime.value)
 
-    toHResult.value = calcToH.toFixed(1) + ' hora(s)'
+      taskResult.value = calcRemove.toFixed(1)
+      taskTime.value = ''
+
+      historicList.lastChild.style = 'color: red'
+
+      if (taskResult.value < 0) {
+        taskResult.value = (0).toFixed(1)
+      }
+    })
   }
 })
 
@@ -64,7 +79,7 @@ doneSecurity.addEventListener('click', () => {
 })
 
 doneBtn.addEventListener('click', () => {
-  showEnd.style = 'top: -100rem'
+  showEnd.style = 'transform: translateY(-100%)'
   setInterval(() => {
     location.reload()
   }, 300)
